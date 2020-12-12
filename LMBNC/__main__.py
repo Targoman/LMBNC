@@ -55,8 +55,13 @@ def main():
     logger = logging.getLogger('LMBNC')
     logger.setLevel(level=logging.DEBUG)
 
+    sh = logging.StreamHandler()
+    sh.setLevel(level=logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s %(message)s')
-    logger.setFormatter(formatter)
+    sh.setFormatter(formatter)
+    
+    logger.addHandler(sh)
+
 
     logger.info('Loading language model')
     lmbnc = LMBNC(args.lm_model_path)

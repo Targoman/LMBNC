@@ -45,14 +45,14 @@ class LMBNC:
                     unigrams[token] += 1
             for t0, t1 in zip(tokens[:-1], tokens[1:]):
                 bigram = '{0} {1}'.format(t0, t1)
-                if bigrams not in bigrams:
+                if bigram not in bigrams:
                     bigrams[bigram] = 1
                 else:
                     bigrams[bigram] += 1
         return unigrams, bigrams
 
     def load_corpus(self, corpus_file_path):
-        self.corpus = [l.strip().split() for l in open(corpus_file_path)]
+        self.corpus = [l.strip().split() for l in open(corpus_file_path, encoding="utf8")]
         self.unigrams, self.bigrams = self.__get_ngram_dictionaries()
 
     @staticmethod
@@ -121,6 +121,6 @@ class LMBNC:
                 pass
 
     def save_corpus(self, corpus_file_path):
-        with open(corpus_file_path, 'wt') as output_corpus:
+        with open(corpus_file_path, 'wt', encoding="utf8") as output_corpus:
             for tokens in self.corpus:
                 output_corpus.write(' '.join(tokens) + '\n')

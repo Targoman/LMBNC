@@ -20,4 +20,4 @@
 # @author Behrooz Vedadian <vedadian@targoman.com>
 ##########################################################################################
 
-from lmbnc import LMBNC
+from .lmbnc import LMBNC
